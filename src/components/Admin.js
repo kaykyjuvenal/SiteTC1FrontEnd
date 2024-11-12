@@ -11,7 +11,7 @@ function Admin() {
   const [loading, setLoading] = useState(true);
   const [novoMedico, setNovoMedico] = useState({ Usuario: '', Senha: '' });
   const [novoPaciente, setNovoPaciente] = useState({ Usuario: '', Senha: '' });
-  const baseUrl = 'http://localhost:3000';
+  const baseUrl = 'https://site-tc-1-back-end-ij8b.vercel.app';
   const baseFrontEnd = 'http://localhost:3001';
 
   useEffect(() => {

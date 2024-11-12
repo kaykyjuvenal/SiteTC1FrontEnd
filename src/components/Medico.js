@@ -11,10 +11,13 @@ function Medico() {
   const [nomeMedico, setNomeMedico] = useState('');
   const [loading, setLoading] = useState(true);
 
+  const baseUrl = "https://site-tc-1-back-end-ij8b.vercel.app"
+
+
   useEffect(() => {
     const fetchPacientes = async () => {
       try {
-        const response = await fetch('http://localhost:3000/usuarios');
+        const response = await fetch(`${baseUrl}/usuarios`);
         if (!response.ok) {
           throw new Error('Erro ao buscar os dados');
         }

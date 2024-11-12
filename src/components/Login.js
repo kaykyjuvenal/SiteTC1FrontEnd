@@ -5,12 +5,13 @@ function Login() {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
+    
     const handleLogin = async (e) => {
         e.preventDefault();  // Previne o comportamento padrão do formulário
 
         try {
             // Faz a requisição POST para o endpoint /login na porta 3000
-            const response = await fetch('http://localhost:3000/login', {
+            const response = await fetch("https://site-tc-1-back-end-ij8b.vercel.app/login", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

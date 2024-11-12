@@ -12,6 +12,7 @@ function Paciente() {
   const [tipoConsulta, setTipoConsulta] = useState('');
   const [error, setError] = useState('');
 
+
   const handleNomeChange = (e) => {
     setNomePaciente(e.target.value);
   };
