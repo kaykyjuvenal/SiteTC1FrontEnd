@@ -11,7 +11,7 @@ function Login() {
 
         try {
             // Faz a requisição POST para o endpoint /login na porta 3000
-            const response = await fetch("https://site-tc-1-back-end-ij8b.vercel.app/login", {
+            const response = await fetch("https://site-tc-1-back-end-f2y7.vercel.app/login", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

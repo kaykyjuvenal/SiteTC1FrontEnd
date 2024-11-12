@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { saveAs } from 'file-saver';  // Importa a biblioteca file-saver
 import Footer from './Footer';
 import Header from './Header';
+import styles from './Admin';
 
 
 function Medico() {
@@ -11,7 +12,7 @@ function Medico() {
   const [nomeMedico, setNomeMedico] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const baseUrl = "https://site-tc-1-back-end-ij8b.vercel.app"
+  const baseUrl = "https://site-tc-1-back-end-f2y7.vercel.app"
 
 
   useEffect(() => {

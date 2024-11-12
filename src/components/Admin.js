@@ -11,8 +11,8 @@ function Admin() {
   const [loading, setLoading] = useState(true);
   const [novoMedico, setNovoMedico] = useState({ Usuario: '', Senha: '' });
   const [novoPaciente, setNovoPaciente] = useState({ Usuario: '', Senha: '' });
-  const baseUrl = 'https://site-tc-1-back-end-ij8b.vercel.app';
-  const baseFrontEnd = 'http://localhost:3001';
+  const baseUrl = 'https://site-tc-1-back-end-f2y7.vercel.app';
+  const baseFrontEnd = 'http://localhost:3000';
 
   useEffect(() => {
     const fetchUsuarios = async () => {
@@ -34,21 +34,13 @@ function Admin() {
   }, []);
 
   const handleAddPaciente = async () => {
-    // Verifica se o paciente já existe
-    const pacienteExistente = usuarios.find(paciente => paciente.Usuario === novoPaciente.Usuario);
-    if (pacienteExistente) {
-      alert('Paciente já existe!');
-      return;
-    }
-  
     try {
-      const response = await fetch(`${baseUrl}/usuarios`, {
-        method: 'PATCH',
+      const response = await fetch(`${baseUrl}/paciente`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          acao: 'adicionar',
-          tipo: 'Pacientes',
-          dados: novoPaciente
+          user: novoPaciente.Usuario,
+          password: novoPaciente.Senha
         }),
       });
   
@@ -56,29 +48,23 @@ function Admin() {
         throw new Error('Erro ao adicionar paciente');
       }
   
-      const updatedData = await response.json();
-      setUsuarios(updatedData.Pacientes);
+      const result = await response.json();
+      alert(result.message);
     } catch (error) {
       console.error('Erro ao adicionar paciente:', error);
     }
+    window.location.href = `${baseFrontEnd}/admin`
   };
-
-  const handleAddMedico = async () => {
-    // Verifica se o médico já existe
-    const medicoExistente = medicos.find(medico => medico.Usuario === novoMedico.Usuario);
-    if (medicoExistente) {
-      alert('Médico já existe!');
-      return;
-    }
   
+  // Função para adicionar médico
+  const handleAddMedico = async () => {
     try {
-      const response = await fetch(`${baseUrl}/usuarios`, {
-        method: 'PATCH',
+      const response = await fetch(`${baseUrl}/medico`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          acao: 'adicionar',
-          tipo: 'Medicos',
-          dados: novoMedico
+          user: novoMedico.Usuario,
+          password: novoMedico.Senha
         }),
       });
   
@@ -86,57 +72,54 @@ function Admin() {
         throw new Error('Erro ao adicionar médico');
       }
   
-      const updatedData = await response.json();
-      setMedicos(updatedData.Medicos);
+      const result = await response.json();
+      alert(result.message);
     } catch (error) {
       console.error('Erro ao adicionar médico:', error);
     }
-  };
-
-  const handleRemovePaciente = async (usuario) => {
-    try {
-      const response = await fetch(`${baseUrl}/usuarios`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          acao: 'remover',
-          tipo: 'Pacientes',
-          usuario
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao remover paciente');
-      }
-
-      const updatedData = await response.json();
-      setUsuarios(updatedData.Pacientes);
-    } catch (error) {
-      console.error('Erro ao remover paciente:', error);
-    }
+    window.location.href = `${baseFrontEnd}/admin`
   };
 
   const handleRemoveMedico = async (usuario) => {
     try {
-      const response = await fetch(`${baseUrl}/usuarios`, {
-        method: 'PATCH',
+      const response = await fetch(`${baseUrl}/deleteMedico`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          acao: 'remover',
-          tipo: 'Medicos',
-          usuario
-        }),
+        body: JSON.stringify({ user: usuario }),
       });
 
       if (!response.ok) {
         throw new Error('Erro ao remover médico');
       }
 
-      const updatedData = await response.json();
-      setMedicos(updatedData.Medicos);
+      // Atualizar a página para refletir a exclusão
+      window.location.reload();
     } catch (error) {
       console.error('Erro ao remover médico:', error);
     }
+    window.location.href = `${baseFrontEnd}/admin`
+  };
+
+  // Função para deletar um paciente
+  const handleRemovePaciente = async (usuario) => {
+    try {
+      const response = await fetch(`${baseUrl}/deletePaciente`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: usuario }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao remover paciente');
+      }
+
+      // Atualizar a página para refletir a exclusão
+      window.location.reload();
+    } catch (error) {
+      console.error('Erro ao remover paciente:', error);
+    }
+    window.location.href = `${baseFrontEnd}/admin`
+
   };
 
   const handleInputChange = (e, type, field) => {
