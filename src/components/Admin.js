@@ -12,7 +12,7 @@ function Admin() {
   const [novoMedico, setNovoMedico] = useState({ Usuario: '', Senha: '' });
   const [novoPaciente, setNovoPaciente] = useState({ Usuario: '', Senha: '' });
   const baseUrl = 'https://site-tc-1-back-end-f2y7.vercel.app';
-  const baseFrontEnd = 'http://localhost:3000';
+  const baseFrontEnd = 'https://sitetc1kaykywaleskabreno.vercel.app/admin';
 
   useEffect(() => {
     const fetchUsuarios = async () => {
@@ -53,7 +53,7 @@ function Admin() {
     } catch (error) {
       console.error('Erro ao adicionar paciente:', error);
     }
-    window.location.href = `${baseFrontEnd}/admin`
+    window.location.href = `${baseFrontEnd}`
   };
   
   // Função para adicionar médico
@@ -77,7 +77,7 @@ function Admin() {
     } catch (error) {
       console.error('Erro ao adicionar médico:', error);
     }
-    window.location.href = `${baseFrontEnd}/admin`
+    window.location.href = `${baseFrontEnd}`
   };
 
   const handleRemoveMedico = async (usuario) => {
@@ -97,7 +97,7 @@ function Admin() {
     } catch (error) {
       console.error('Erro ao remover médico:', error);
     }
-    window.location.href = `${baseFrontEnd}/admin`
+    window.location.href = `${baseFrontEnd}`
   };
 
   // Função para deletar um paciente
@@ -118,7 +118,7 @@ function Admin() {
     } catch (error) {
       console.error('Erro ao remover paciente:', error);
     }
-    window.location.href = `${baseFrontEnd}/admin`
+    window.location.href = `${baseFrontEnd}`
 
   };
 
@@ -190,7 +190,7 @@ function Admin() {
           </li>
         ))}
       </ul>
-      <button className='buttonvoltar' onClick={() => { window.location.href = `${baseFrontEnd}/login`; }}>Voltar</button>
+      <button className='buttonvoltar' onClick={() => { window.location.href = `${baseFrontEnd}`; }}>Voltar</button>
       <Footer/>
     </div>
     
