@@ -68,7 +68,7 @@ function Paciente() {
 
     // Cria o conteúdo do arquivo
     const consulta = `Nome do Paciente: ${nomePaciente}
-            Rua/Logradouro: ${data.logradouro}
+        Rua/Logradouro: ${data.logradouro}
         Bairro: ${data.bairro}
         Cidade: ${data.localidade}
         Estado: ${data.uf}
