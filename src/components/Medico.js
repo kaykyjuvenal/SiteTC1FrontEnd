@@ -12,7 +12,6 @@ function Medico() {
   const [nomeMedico, setNomeMedico] = useState('');
   const [loading, setLoading] = useState(true);
   const [cep, setCep] = useState('');
-  const [Endereço, setSelectedEndereco]= useState('');
 
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
