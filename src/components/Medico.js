@@ -12,6 +12,8 @@ function Medico() {
   const [nomeMedico, setNomeMedico] = useState('');
   const [loading, setLoading] = useState(true);
   const [cep, setCep] = useState('');
+  const [Endereço, setSelectedEndereco]= useState('');
+
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -72,7 +74,7 @@ function Medico() {
   };
 
   const handleSaveAtendimento = () => {
-    if (!selectedPaciente || !resultadoExame || !nomeMedico) {
+    if (!selectedPaciente || !resultadoExame || !nomeMedico || !cep) {
       console.error('Paciente, resultado do exame e nome do médico são obrigatórios');
       return;
     }
@@ -80,8 +82,14 @@ function Medico() {
     // Cria o conteúdo do arquivo
     const atendimento = `
       Paciente: ${selectedPaciente}
+      Endereço: 
+        Rua/Logradouro: ${data.logradouro}
+        Bairro: ${data.bairro}
+        Cidade: ${data.localidade}
+        Estado: ${data.uf}
       Resultado do Exame: ${resultadoExame}
       Médico: ${nomeMedico}
+    
       ==============================
     `;
     const blob = new Blob([atendimento], { type: 'text/plain;charset=utf-8' });

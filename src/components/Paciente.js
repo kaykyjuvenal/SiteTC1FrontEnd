@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { saveAs } from 'file-saver';  // Importa a biblioteca file-saver
 import Footer from './Footer';
 import Header from './Header';
@@ -11,6 +11,8 @@ function Paciente() {
   const [horarioConsulta, setHorarioConsulta] = useState('');
   const [tipoConsulta, setTipoConsulta] = useState('');
   const [error, setError] = useState('');
+  const [cep, setCep] = useState('');
+  const [Endereço, setSelectedEndereco]= useState('');
 
 
   const handleNomeChange = (e) => {
