@@ -47,7 +47,7 @@ function Medico() {
   }, []);
 
   const handleFetch1 = async () => {
-    const API_URL = 'https://api.unsplash.com/users/?client_id=UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
+    const API_URL = 'https://api.unsplash.com/photos/users/?client_id=UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
 
     try {
       const response = await fetch(API_URL);
