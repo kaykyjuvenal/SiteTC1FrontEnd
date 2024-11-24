@@ -50,7 +50,7 @@ function Medico() {
 
     const query = 'person';
     const clientId = 'UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
-    const API_URL = 'https://api.unsplash.com/photos/random/?client_id=UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
+    const API_URL = 'https://api.unsplash.com/photos/random?client_id=UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
     try {
       const response = await fetch(API_URL);
       if (!response.ok) {
