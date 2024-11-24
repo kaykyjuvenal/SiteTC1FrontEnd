@@ -58,9 +58,10 @@ function Medico() {
       }
 
       const data = await response.json();
-      // Pega a primeira imagem da lista retornada
-      const firstImage = data[0]?.urls?.regular;
-      setImage(firstImage);
+      // Pega imagem da lista retornada
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const RandomImage = data[randomIndex]?.urls?.regular;
+      setImage(RandomImage);
     } catch (err) {
       setError(err.message);
     }
