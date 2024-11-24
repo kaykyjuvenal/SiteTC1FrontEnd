@@ -178,12 +178,12 @@ function Admin() {
       <ul>
         {medicos.map((medico) => (
           <li key={medico.Usuario}>
-            Usuário: {medico.Usuario}, Senha: {medico.Senha}
             <div id="imagemUsuario">
+            Usuário: {medico.Usuario}, Senha: {medico.Senha}
             <img 
               src={medico.imagem} 
               alt="Imagem do Médico" 
-              style={{ width: '100px' }} 
+              style={{ width: '200px' }} 
             />
             </div>
 
