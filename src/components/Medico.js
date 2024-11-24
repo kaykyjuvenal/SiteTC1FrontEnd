@@ -48,8 +48,7 @@ function Medico() {
 
   const handleFetch1 = async () => {
 
-    const query = 'users';
-    const language = 'en';
+    const query = 'person';
     const clientId = 'UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
     const API_URL = `https://api.unsplash.com/photos/random/?client_id=${clientId}&query=${query}`;
     try {
