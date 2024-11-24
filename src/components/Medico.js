@@ -16,7 +16,6 @@ function Medico() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
-  const [image, setImage] = useState(null);
 
 
   const baseUrl = "https://site-tc-1-back-end-f2y7.vercel.app"
