@@ -178,13 +178,13 @@ function Admin() {
       <ul>
         {medicos.map((medico) => (
           <li key={medico.Usuario}>
-            <div id="imagemUsuario">
-            Usuário: {medico.Usuario}, Senha: {medico.Senha}
-            <img 
+            <div id="imagemUsuario"><img 
               src={medico.imagem} 
               alt="Imagem do Médico" 
-              style={{ width: '200px' }} 
+              style={{ width: '200px', height: '200px' }} 
             />
+            <br></br>
+            Usuário: {medico.Usuario}, Senha: {medico.Senha}
             </div>
 
             <button className='buttonlixeira' onClick={() => handleRemoveMedico(medico.Usuario)}><MdDeleteForever /></button>
