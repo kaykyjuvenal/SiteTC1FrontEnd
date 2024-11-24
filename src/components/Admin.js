@@ -11,9 +11,11 @@ function Admin() {
   const [loading, setLoading] = useState(true);
   const [novoMedico, setNovoMedico] = useState({ Usuario: '', Senha: '' });
   const [novoPaciente, setNovoPaciente] = useState({ Usuario: '', Senha: '' });
+  const [error, setError] = useState(null);
+  const [image, setImage] = useState(null);
   const baseUrl = 'https://site-tc-1-back-end-f2y7.vercel.app';
   const baseFrontEnd = 'https://sitetc1kaykywaleskabreno.vercel.app/admin';
-  
+  const API_URL_Imagem = 'https://api.unsplash.com/photos/?client_id=UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
 
   useEffect(() => {
     const fetchUsuarios = async () => {
@@ -135,6 +137,24 @@ function Admin() {
   if (loading) {
     return <div>Carregando...</div>;
   }
+  const handleFetchImage= async () => {
+
+    const API_URL = 'https://api.unsplash.com/photos?client_id=UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
+    try {
+      const response = await fetch(API_URL);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      // Pega imagem da lista retornada
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const RandomImage = data[randomIndex]?.urls?.regular;
+      setImage(RandomImage);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
 
   return (

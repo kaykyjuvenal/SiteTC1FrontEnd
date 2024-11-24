@@ -21,11 +21,7 @@ function Medico() {
 
   const baseUrl = "https://site-tc-1-back-end-f2y7.vercel.app"
   const APICEP = "https://viacep.com.br/ws/"
-  const APIIMAGEM = "https://api.unsplash.com/photos/?client_id=UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs"
 
-
-
-  
 
 
   useEffect(() => {
@@ -46,26 +42,7 @@ function Medico() {
     fetchPacientes();
   }, []);
 
-  const handleFetch1 = async () => {
 
-    const query = 'person';
-    const clientId = 'UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
-    const API_URL = 'https://api.unsplash.com/photos?client_id=UAyZcwpLMS7aeLdK1opXUn-5Jams-2O_j420soTVBIs';
-    try {
-      const response = await fetch(API_URL);
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      // Pega imagem da lista retornada
-      const randomIndex = Math.floor(Math.random() * data.length);
-      const RandomImage = data[randomIndex]?.urls?.regular;
-      setImage(RandomImage);
-    } catch (err) {
-      setError(err.message);
-    }
-  };
 
 
   const handleFetch = async () => {
@@ -159,15 +136,6 @@ function Medico() {
             ))}
           </select>
         </label>
-      </div>
-
-      <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Fetch Image from Unsplash API</h1>
-      <button onClick={handleFetch1} style={{ padding: '10px 20px', fontSize: '16px' }}>
-        Fetch Image
-      </button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {image && <img src={image} alt="Fetched from Unsplash" style={{ marginTop: '20px', maxWidth: '100%' }} />}
       </div>
 
       <div>
