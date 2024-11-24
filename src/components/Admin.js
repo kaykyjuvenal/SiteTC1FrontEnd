@@ -174,10 +174,21 @@ function Admin() {
       <button onClick={handleAddPaciente}>Adicionar Paciente</button>
       
       <h2>Lista de Médicos</h2>
+
       <ul>
         {medicos.map((medico) => (
           <li key={medico.Usuario}>
-            Usuário: {medico.Usuario}, Senha: {medico.Senha}, Imagem do Usuario: {medico.imagem}
+            Usuário: {medico.Usuario}, Senha: {medico.Senha}
+            <div id="imagemUsuario">
+
+            </div>
+            const imagemDiv = document.getElementById('imagemUsuario');
+            const imagemElemento = document.createElement('img')
+            imagemElemento.src = medico.imagem;
+            imagemElemento.alt = "Imagem do Médico"
+            imagemElemento.style.width= '100px';
+
+            imagemDiv.appendChild(imagemElemento);
             <button className='buttonlixeira' onClick={() => handleRemoveMedico(medico.Usuario)}><MdDeleteForever /></button>
           </li>
         ))}
