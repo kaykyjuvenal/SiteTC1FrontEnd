@@ -180,15 +180,13 @@ function Admin() {
           <li key={medico.Usuario}>
             Usuário: {medico.Usuario}, Senha: {medico.Senha}
             <div id="imagemUsuario">
-
+            <img 
+              src={medico.imagem} 
+              alt="Imagem do Médico" 
+              style={{ width: '100px' }} 
+            />
             </div>
-            const imagemDiv = document.getElementById('imagemUsuario');
-            const imagemElemento = document.createElement('img')
-            imagemElemento.src = medico.imagem;
-            imagemElemento.alt = "Imagem do Médico"
-            imagemElemento.style.width= '100px';
 
-            imagemDiv.appendChild(imagemElemento);
             <button className='buttonlixeira' onClick={() => handleRemoveMedico(medico.Usuario)}><MdDeleteForever /></button>
           </li>
         ))}
