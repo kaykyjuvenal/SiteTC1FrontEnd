@@ -196,9 +196,17 @@ function Admin() {
       <ul>
         {usuarios.map((paciente) => (
           <li key={paciente.Usuario}>
-            Usuário: {paciente.Usuario}, Senha: {paciente.Senha},Imagem do Usuario: {paciente.imagem}
+            <div id="imagemUsuario"><img 
+              src={paciente.imagem} 
+              alt="Imagem do Paciente" 
+              style={{ width: '200px', height: '200px' }} 
+            />
+            <br></br>
+            Usuário: {paciente.Usuario}, Senha: {paciente.Senha}
             <button className='buttonlixeira' onClick={() => handleRemovePaciente(paciente.Usuario)}><MdDeleteForever /></button>
+            </div>
           </li>
+
         ))}
       </ul>
       <button className='buttonvoltar' onClick={() => { window.location.href = `${baseFrontEnd}`; }}>Voltar</button>
